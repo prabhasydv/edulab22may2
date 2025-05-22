@@ -4,7 +4,13 @@ import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useCreateCheckoutSessionMutation, useVerifyPaymentMutation } from "@/features/api/purchaseApi";
 
-const BuyCourseButton = ({ courseId, selectedOption }) => {
+const BuyCourseButton = ({ courseId, selectedOption, selectedBatch, disabled }) => {
+  const handleBuy = () => {
+    if (!disabled) {
+      // your payment logic here
+      console.log("Buying:", courseId, selectedOption, selectedBatch);
+    }
+  };
   // Hook to create checkout session (RTK Query mutation)
   const [
     createCheckoutSession,
@@ -58,7 +64,8 @@ const BuyCourseButton = ({ courseId, selectedOption }) => {
               razorpay_order_id: paymentResponse.razorpay_order_id,
               razorpay_signature: paymentResponse.razorpay_signature,
               courseId, // Include courseId for verification
-              selectedOptionName: selectedOption.optionName, // Verify selected option
+              // selectedOptionName: selectedOption.optionName, // Verify selected option
+              selectedPricingOption: selectedOption.optionName, 
             }).unwrap();
 
             // If payment is verified, show success toast and reload page

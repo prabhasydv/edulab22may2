@@ -106,6 +106,7 @@ const AddCourse = () => {
                 <SelectItem value="Web Developmentr">Web Development</SelectItem>
                 <SelectItem value="Blockchain">Blockchain</SelectItem>
                 <SelectItem value="Programming">Programming</SelectItem>
+                <SelectItem value="Programming">Software Testing</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>

@@ -38,6 +38,8 @@ const categories = [
   { id: "web development", label: "Web Development" },
   { id: "blockchain", label: "Blockchain" },
   { id: "programming", label: "Programming" },
+  { id: "software testing", label: "Software Testing" },
+
 ];
 
 const Filter = ({ handleFilterChange }) => {

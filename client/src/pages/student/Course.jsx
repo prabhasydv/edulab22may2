@@ -162,11 +162,11 @@ const Course = ({ course }) => {
               <img
                 src={course.courseThumbnail}
                 alt={course.courseTitle}
-                className="w-full h-48 object-cover p-2"
+                className="w-full h-48 object-contain p-2"
               />
 
               <div className="p-4 flex flex-col">
-                <h5 className="text-xl font-semibold text-gray-900 dark:text-white">{course.courseTitle}</h5>
+                <h5 className="text-xl font-semibold text-gray-900 dark:text-white line-clamp-2">{course.courseTitle}</h5>
                 <p className="text-gray-600 dark:text-gray-400 mt-2">Live Classroom</p>
                 <div className="flex justify-between mt-4 text-sm text-gray-500 dark:text-gray-400">
                   {minPrice === maxPrice ? (

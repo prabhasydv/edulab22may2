@@ -50,7 +50,17 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+			
+  		},
+		  animation: {
+			brighten: 'brighten 0.9s ease-out forwards',
+		  },
+		  keyframes: {
+			brighten: {
+			  '0%': { opacity: '0', filter: 'brightness(0.8)', transform: 'scale(0.95)' },
+			  '100%': { opacity: '1', filter: 'brightness(1)', transform: 'scale(1)' },
+			},
+		  },
   	}
   },
   plugins: [require("tailwindcss-animate")],

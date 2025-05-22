@@ -6,7 +6,7 @@ const WhatsappChat = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleClick = () => {
-    window.open("https://wa.me/919833260705", "_blank"); // Replace with your number
+    window.open("https://wa.me/917985916381", "_blank"); // Replace with your number
   };
 
   return (

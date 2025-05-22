@@ -1,4 +1,4 @@
- 
+import mongoose from "mongoose"; 
 import { Course } from "../models/course.model.js";
 import { Lecture } from "../models/lecture.model.js";
 import {deleteMediaFromCloudinary, deleteVideoFromCloudinary, uploadMedia} from "../utils/cloudinary.js";
@@ -139,45 +139,73 @@ export const getCreatorCourses = async (req,res) => {
         })
     }
 }
-// export const editCourse = async (req,res) => {
+
+// export const editCourse = async (req, res) => {
 //     try {
 //         const courseId = req.params.courseId;
-//         const {courseTitle, subTitle, description, category, courseLevel, coursePrice} = req.body;
+//         let {
+//             courseTitle,
+//             subTitle,
+//             description,
+//             courseOverview, // ✅ Added here
+//             category,
+//             courseLevel,
+//             pricingOptions = [],
+//         } = req.body;
 //         const thumbnail = req.file;
 
-//         let course = await Course.findById(courseId);
-//         if(!course){
-//             return res.status(404).json({
-//                 message:"Course not found!"
-//             })
-//         }
-//         let courseThumbnail;
-//         if(thumbnail){
-//             if(course.courseThumbnail){
-//                 const publicId = course.courseThumbnail.split("/").pop().split(".")[0];
-//                 await deleteMediaFromCloudinary(publicId); // delete old image
+//         // ✅ Parse pricingOptions if it's a string
+//         if (typeof pricingOptions === "string") {
+//             try {
+//                 pricingOptions = JSON.parse(pricingOptions);
+//             } catch (err) {
+//                 return res.status(400).json({ message: "Invalid pricingOptions format." });
 //             }
-//             // upload a thumbnail on clourdinary
+//         }
+
+//         // Optional: Validate pricingOptions structure
+//         if (!Array.isArray(pricingOptions)) {
+//             return res.status(400).json({ message: "pricingOptions should be an array." });
+//         }
+
+//         let course = await Course.findById(courseId);
+//         if (!course) {
+//             return res.status(404).json({ message: "Course not found!" });
+//         }
+
+//         let courseThumbnail;
+//         if (thumbnail) {
+//             if (course.courseThumbnail) {
+//                 const publicId = course.courseThumbnail.split("/").pop().split(".")[0];
+//                 await deleteMediaFromCloudinary(publicId);
+//             }
 //             courseThumbnail = await uploadMedia(thumbnail.path);
 //         }
 
- 
-//         const updateData = {courseTitle, subTitle, description, category, courseLevel, coursePrice, courseThumbnail:courseThumbnail?.secure_url};
+//         const updateData = {
+//             courseTitle,
+//             subTitle,
+//             description,
+//             courseOverview, // ✅ Added here
+//             category,
+//             courseLevel,
+//             courseThumbnail: courseThumbnail?.secure_url,
+//             pricingOptions,
+//         };
 
-//         course = await Course.findByIdAndUpdate(courseId, updateData, {new:true});
+//         course = await Course.findByIdAndUpdate(courseId, updateData, { new: true });
 
 //         return res.status(200).json({
 //             course,
-//             message:"Course updated successfully."
-//         })
-
+//             message: "Course updated successfully.",
+//         });
 //     } catch (error) {
 //         console.log(error);
 //         return res.status(500).json({
-//             message:"Failed to create course"
-//         })
+//             message: "Failed to update course",
+//         });
 //     }
-// }
+// };
 
 export const editCourse = async (req, res) => {
     try {
@@ -186,6 +214,7 @@ export const editCourse = async (req, res) => {
             courseTitle,
             subTitle,
             description,
+            courseOverview, // ✅ Added here
             category,
             courseLevel,
             pricingOptions = [],
@@ -201,9 +230,29 @@ export const editCourse = async (req, res) => {
             }
         }
 
-        // Optional: Validate pricingOptions structure
+        // ✅ Validate pricingOptions structure
         if (!Array.isArray(pricingOptions)) {
             return res.status(400).json({ message: "pricingOptions should be an array." });
+        }
+
+        // ✅ Optional: Validate nested batches inside each pricing option
+        for (const option of pricingOptions) {
+            if (!option.optionName || !option.price) {
+                return res.status(400).json({ message: "Each pricing option must have optionName and price." });
+            }
+
+            if (option.batches && !Array.isArray(option.batches)) {
+                return res.status(400).json({ message: "Batches inside pricingOptions must be an array." });
+            }
+
+            if (option.batches) {
+                for (const batch of option.batches) {
+                    if (!batch.batchName || !batch.startDate) {
+                        return res.status(400).json({ message: "Each batch must have batchName and startDate." });
+                    }
+                    // You can add more batch validations here (like time, capacity, etc.)
+                }
+            }
         }
 
         let course = await Course.findById(courseId);
@@ -224,9 +273,10 @@ export const editCourse = async (req, res) => {
             courseTitle,
             subTitle,
             description,
+            courseOverview,
             category,
             courseLevel,
-            courseThumbnail: courseThumbnail?.secure_url,
+            courseThumbnail: courseThumbnail?.secure_url || course.courseThumbnail,
             pricingOptions,
         };
 
@@ -448,31 +498,73 @@ export const getLectureById = async (req,res) => {
 
 // publich unpublish course logic
 
-export const togglePublishCourse = async (req,res) => {
-    try {
-        const {courseId} = req.params;
-        const {publish} = req.query; // true, false
-        const course = await Course.findById(courseId);
-        if(!course){
-            return res.status(404).json({
-                message:"Course not found!"
-            });
-        }
-        // publish status based on the query paramter
-        course.isPublished = publish === "true";
-        await course.save();
+// export const togglePublishCourse = async (req,res) => {
+//     try {
+//         const {courseId} = req.params;
+//         const {publish} = req.query; // true, false
+//         const course = await Course.findById(courseId);
+//         if(!course){
+//             return res.status(404).json({
+//                 message:"Course not found!"
+//             });
+//         }
+//         // publish status based on the query paramter
+//         course.isPublished = publish === "true";
+//         await course.save();
 
-        const statusMessage = course.isPublished ? "Published" : "Unpublished";
-        return res.status(200).json({
-            message:`Course is ${statusMessage}`
-        });
+//         const statusMessage = course.isPublished ? "Published" : "Unpublished";
+//         return res.status(200).json({
+//             message:`Course is ${statusMessage}`
+//         });
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(500).json({
+//             message:"Failed to update status"
+//         })
+//     }
+// }
+
+// publich unpublish course logic
+
+
+
+// changes to fix publish or unpublish course
+
+export const togglePublishCourse = async (req, res) => {
+    try {
+      const { courseId } = req.params;
+      const { publish } = req.query;
+  
+      if (publish !== "true" && publish !== "false") {
+        return res.status(400).json({ message: "Invalid publish value" });
+      }
+  
+      const updatedCourse = await Course.findByIdAndUpdate(
+        courseId,
+        { isPublished: publish === "true" },
+        { new: true, runValidators: true }
+      );
+  
+      if (!updatedCourse) {
+        return res.status(404).json({ message: "Course not found" });
+      }
+  
+      res.status(200).json({
+        message: `Course has been ${updatedCourse.isPublished ? "published" : "unpublished"}`,
+        course: updatedCourse
+      });
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            message:"Failed to update status"
-        })
+      console.error("Toggle publish error:", error.message, error.stack);
+      res.status(500).json({
+        message: "Failed to update status",
+        error: error.message
+      });
     }
-}
+  };
+
+// changes to fix publish or unpublish course
+
+  
 
 // export const togglePublishCourse = async (req, res) => {
 //     try {

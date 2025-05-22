@@ -33,10 +33,20 @@ const CourseTab = () => {
     courseTitle: "",
     subTitle: "",
     description: "",
+    overview: "", // <-- New field
     category: "",
     courseLevel: "",
     courseThumbnail: "",
-    pricingOptions: [{ optionName: "", price: "" }],
+    // pricingOptions: [{ optionName: "", price: "" }],
+    pricingOptions: [
+      {
+        optionName: "",
+        price: "",
+        batches: [
+          { batchName: "", startDate: "", endDate: "", capacity: "" }
+        ],
+      }
+    ],
   });
 
   const params = useParams();
@@ -58,10 +68,19 @@ const CourseTab = () => {
         courseTitle: course.courseTitle,
         subTitle: course.subTitle,
         description: course.description,
+        overview: course.overview || "", // <-- Set from course data
         category: course.category,
         courseLevel: course.courseLevel,
         courseThumbnail: "",
-        pricingOptions: course.pricingOptions || [{ optionName: "", price: "" }],
+        // pricingOptions: course.pricingOptions || [{ optionName: "", price: "" }],
+        pricingOptions: course.pricingOptions.length
+          ? course.pricingOptions.map(opt => ({
+            ...opt,
+            batches: opt.batches?.length
+              ? opt.batches
+              : [{ batchName: "", startDate: "", endDate: "", capacity: "" }],
+          }))
+          : [{ optionName: "", price: "", batches: [{ batchName: "", startDate: "", endDate: "", capacity: "" }] }],
       });
     }
   }, [courseByIdData]);
@@ -71,23 +90,30 @@ const CourseTab = () => {
     setInput({ ...input, [name]: value });
   };
 
-  const handlePriceChange = (index, field, value) => {
-    const updatedPrices = [...input.pricingOptions];
-    updatedPrices[index][field] = value;
-    setInput({ ...input, pricingOptions: updatedPrices });
+  // const handlePriceChange = (index, field, value) => {
+  //   const updatedPrices = [...input.pricingOptions];
+  //   updatedPrices[index][field] = value;
+  //   setInput({ ...input, pricingOptions: updatedPrices });
+  // };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const addPriceOption = () => {
-    setInput({
-      ...input,
-      pricingOptions: [...input.pricingOptions, { optionName: "", price: "" }],
-    });
-  };
+  // const addPriceOption = () => {
+  //   setInput({
+  //     ...input,
+  //     pricingOptions: [...input.pricingOptions, { optionName: "", price: "" }],
+  //   });
+  // };
 
-  const removePriceOption = (index) => {
-    const updatedPrices = input.pricingOptions.filter((_, i) => i !== index);
-    setInput({ ...input, pricingOptions: updatedPrices });
-  };
+  // const removePriceOption = (index) => {
+  //   const updatedPrices = input.pricingOptions.filter((_, i) => i !== index);
+  //   setInput({ ...input, pricingOptions: updatedPrices });
+  // };
 
   const selectCategory = (value) => {
     setInput({ ...input, category: value });
@@ -112,10 +138,12 @@ const CourseTab = () => {
     formData.append("courseTitle", input.courseTitle);
     formData.append("subTitle", input.subTitle);
     formData.append("description", input.description);
+    formData.append("courseOverview", input.overview); // ✅ Add this here
     formData.append("category", input.category);
     formData.append("courseLevel", input.courseLevel);
     formData.append("courseThumbnail", input.courseThumbnail);
     formData.append("pricingOptions", JSON.stringify(input.pricingOptions));
+
 
     await editCourse({ formData, courseId });
   };
@@ -131,6 +159,43 @@ const CourseTab = () => {
       toast.error("Failed to publish or unpublish course");
     }
   };
+
+  const handlePriceChange = (index, field, value) => {
+    const updatedPrices = [...input.pricingOptions];
+    updatedPrices[index][field] = value;
+    setInput(prev => ({ ...prev, pricingOptions: updatedPrices }));
+  };
+
+  const handleBatchChange = (priceIndex, batchIndex, field, value) => {
+    const updatedPrices = [...input.pricingOptions];
+    updatedPrices[priceIndex].batches[batchIndex][field] = value;
+    setInput(prev => ({ ...prev, pricingOptions: updatedPrices }));
+  };
+
+  const addBatch = (priceIndex) => {
+    const updatedPrices = [...input.pricingOptions];
+    updatedPrices[priceIndex].batches.push({ batchName: "", startDate: "", endDate: "", capacity: "" });
+    setInput(prev => ({ ...prev, pricingOptions: updatedPrices }));
+  };
+
+  const removeBatch = (priceIndex, batchIndex) => {
+    const updatedPrices = [...input.pricingOptions];
+    updatedPrices[priceIndex].batches = updatedPrices[priceIndex].batches.filter((_, i) => i !== batchIndex);
+    setInput(prev => ({ ...prev, pricingOptions: updatedPrices }));
+  };
+
+  const addPriceOption = () => {
+    setInput(prev => ({
+      ...prev,
+      pricingOptions: [...prev.pricingOptions, { optionName: "", price: "", batches: [{ batchName: "", startDate: "", endDate: "", capacity: "" }] }],
+    }));
+  };
+
+  const removePriceOption = (index) => {
+    const updatedPrices = input.pricingOptions.filter((_, i) => i !== index);
+    setInput(prev => ({ ...prev, pricingOptions: updatedPrices }));
+  };
+
 
   useEffect(() => {
     if (isSuccess) {
@@ -194,6 +259,16 @@ const CourseTab = () => {
             <Label>Description</Label>
             <RichTextEditor input={input} setInput={setInput} />
           </div>
+          <div>
+            <Label>Overview</Label>
+            <textarea
+              name="overview"
+              value={input.overview}
+              onChange={changeEventHandler}
+              className="w-full p-2 border rounded-md min-h-[120px]"
+              placeholder="Write a short overview of the course..."
+            />
+          </div>
 
           <div className="flex items-center gap-5 flex-wrap">
             <div>
@@ -215,6 +290,7 @@ const CourseTab = () => {
                     <SelectItem value="Web Development">Web Development</SelectItem>
                     <SelectItem value="Blockchain">Blockchain</SelectItem>
                     <SelectItem value="Programming">Programming</SelectItem>
+                    <SelectItem value="Software Testing">Software Testing</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -252,7 +328,7 @@ const CourseTab = () => {
           </div>
 
           {/* Price Options Section */}
-          <div>
+          {/* <div>
             <Label>Price Options (USD)</Label>
             {input.pricingOptions.map((option, index) => (
               <div key={index} className="flex gap-2 items-center mb-2">
@@ -290,7 +366,106 @@ const CourseTab = () => {
               <Plus className="mr-1 h-4 w-4" />
               Add Option
             </Button>
+          </div> */}
+          <div>
+            <Label>Price Options (USD)</Label>
+            {input.pricingOptions.map((option, priceIndex) => (
+              <div key={priceIndex} className="mb-6 border p-4 rounded-md">
+                <div className="flex items-center gap-2 mb-2">
+                  <Input
+                    placeholder="Option Name (e.g. Basic, Premium)"
+                    value={option.optionName}
+                    onChange={(e) => handlePriceChange(priceIndex, "optionName", e.target.value)}
+                    className="w-[180px]"
+                  />
+                  <Input
+                    type="number"
+                    placeholder="Price"
+                    value={option.price}
+                    onChange={(e) => handlePriceChange(priceIndex, "price", e.target.value)}
+                    className="w-[120px]"
+                  />
+                  {input.pricingOptions.length > 1 && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      onClick={() => removePriceOption(priceIndex)}
+                    >
+                      <Trash2 className="text-red-500" />
+                    </Button>
+                  )}
+                </div>
+
+                {/* Batches for this pricing option */}
+                <div className="ml-4">
+                  <Label>Batches</Label>
+                  {option.batches.map((batch, batchIndex) => (
+                    <div key={batchIndex} className="flex gap-2 items-center mb-2 flex-wrap">
+                      <Input
+                        placeholder="Batch Name"
+                        value={batch.batchName}
+                        onChange={(e) => handleBatchChange(priceIndex, batchIndex, "batchName", e.target.value)}
+                        className="w-[180px]"
+                      />
+                      <Input
+                        type="text"
+                        placeholder="Start Date (e.g., 28 May)"
+                        value={batch.startDate}
+                        onChange={(e) => handleBatchChange(priceIndex, batchIndex, "startDate", e.target.value)}
+                        className="w-[140px]"
+                      />
+
+                      <Input
+                        type="text"
+                        placeholder="End Date (e.g., 28 May)"
+                        value={batch.endDate}
+                        onChange={(e) => handleBatchChange(priceIndex, batchIndex, "endDate", e.target.value)}
+                        className="w-[140px]"
+                      />
+                      <Input
+                        type="number"
+                        min="0"
+                        placeholder="Capacity"
+                        value={batch.capacity}
+                        onChange={(e) => handleBatchChange(priceIndex, batchIndex, "capacity", e.target.value)}
+                        className="w-[100px]"
+                      />
+                      {option.batches.length > 1 && (
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          onClick={() => removeBatch(priceIndex, batchIndex)}
+                        >
+                          <Trash2 className="text-red-500" />
+                        </Button>
+                      )}
+                    </div>
+                  ))}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => addBatch(priceIndex)}
+                    className="mt-1"
+                  >
+                    <Plus className="mr-1 h-4 w-4" />
+                    Add Batch
+                  </Button>
+                </div>
+              </div>
+            ))}
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={addPriceOption}
+              className="mt-1"
+            >
+              <Plus className="mr-1 h-4 w-4" />
+              Add Price Option
+            </Button>
           </div>
+
 
           <div className="flex gap-2 mt-6">
             <Button onClick={() => navigate("/admin/course")} variant="outline">

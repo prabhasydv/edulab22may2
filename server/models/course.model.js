@@ -54,6 +54,9 @@ const courseSchema = new mongoose.Schema({
         required:true
     },
     subTitle: {type:String}, 
+    courseOverview: { // ✅ New field added
+        type: String
+    },
     description:{ type:String},
     category:{
         type:String,
@@ -67,6 +70,15 @@ const courseSchema = new mongoose.Schema({
         {
             optionName: { type: String, required: true }, // e.g., Standard, Premium
             price: { type: Number, required: true },
+            batches: [
+                {
+                    batchName: { type: String, required: true },
+                    startDate: { type: String, required: true }, // e.g., "28 May"
+                    endDate: { type: String, required: true },   // e.g., "30 June"
+                    timing: { type: String },                    // e.g., "10:00 AM - 12:00 PM"
+                    seatsAvailable: { type: Number }
+                }
+            ]
         }
     ],
     courseThumbnail:{
