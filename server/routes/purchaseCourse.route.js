@@ -30,7 +30,7 @@ router.route("/checkout/create-checkout-session").post(isAuthenticated, createCh
 
 
 // Get course detail along with purchase status
-router.route("/course/:courseId/detail-with-status").get(isAuthenticated, getCourseDetailWithPurchaseStatus);
+router.route("/course/:courseId/detail-with-status").get(getCourseDetailWithPurchaseStatus);
 
 // Get all purchased courses (admin or user)
 router.route("/").get(isAuthenticated, getAllPurchasedCourse);

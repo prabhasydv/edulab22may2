@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://theduocean.org/sitemap.xml
+Sitemap: https://theduocean.com/sitemap.xml

@@ -3,8 +3,12 @@ import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useCreateCheckoutSessionMutation, useVerifyPaymentMutation } from "@/features/api/purchaseApi";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BuyCourseButton = ({ courseId, selectedOption, selectedBatch, disabled }) => {
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated); 
   const handleBuy = () => {
     if (!disabled) {
       // your payment logic here
@@ -22,11 +26,19 @@ const BuyCourseButton = ({ courseId, selectedOption, selectedBatch, disabled }) 
 
   // Function to handle course purchase
   const purchaseCourseHandler = async () => {
-    // Validate courseId and selectedOption
-    if (!courseId) {
-      toast.error("Invalid course ID");
+    if (!isAuthenticated) {
+      toast.error("Please login to purchase this course.");
+      navigate("/login");
       return;
     }
+
+  // Function to handle course purchase
+  // const purchaseCourseHandler = async () => {
+  //   // Validate courseId and selectedOption
+  //   if (!courseId) {
+  //     toast.error("Invalid course ID");
+  //     return;
+  //   }
 
     if (!selectedOption?.optionName) {
       toast.error("Please select a pricing option before proceeding.");

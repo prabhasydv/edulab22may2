@@ -91,7 +91,8 @@ const CourseDetail = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto my-5 px-4 md:px-8 flex flex-col lg:flex-row justify-between gap-10">
+      {/* <div className="max-w-7xl mx-auto my-5 px-4 md:px-8 flex flex-col lg:flex-row justify-between gap-10"> */}
+      <div className="flex flex-col-reverse lg:flex-row gap-6 max-w-7xl mx-auto my-5 px-4 md:px-8 lg:flex-row justify-between gap-10">
 
         {/* Left Side */}
         <div className="w-full lg:w-1/2 space-y-5">
@@ -117,7 +118,7 @@ const CourseDetail = () => {
 
 
           {/* Curriculum Section */}
-          <Card>
+          {/* <Card className='mt-6'>
             <CardHeader>
               <CardTitle>Curriculum</CardTitle>
             </CardHeader>
@@ -144,7 +145,38 @@ const CourseDetail = () => {
                 <p className="text-gray-500">No lectures available.</p>
               )}
             </CardContent>
-          </Card>
+          </Card> */}
+          <Card className="mt-6">
+  <CardHeader>
+    <CardTitle>Curriculum</CardTitle>
+  </CardHeader>
+  <CardContent className="space-y-3">
+    {course?.lectures?.length > 0 ? (
+      course.lectures.map((lecture, idx) => (
+        <div
+          key={idx}
+          className="h-20 flex items-center gap-4 px-4 rounded-xl border bg-card text-card-foreground shadow overflow-hidden"
+        >
+          <span className="flex-shrink-0">
+            {true ? (
+              <div className="w-5 h-5 rounded-full bg-green-500 dark:bg-green-600 flex items-center justify-center">
+                <Check size={12} className="text-white" />
+              </div>
+            ) : (
+              <Lock size={14} className="text-gray-600 dark:text-gray-400" />
+            )}
+          </span>
+          <p className="text-left text-sm font-medium truncate w-full">
+            {lecture.lectureTitle}
+          </p>
+        </div>
+      ))
+    ) : (
+      <p className="text-gray-500">No lectures available.</p>
+    )}
+  </CardContent>
+</Card>
+
         </div>
 
         {/* Right Side */}
@@ -254,25 +286,19 @@ const CourseDetail = () => {
                   <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl max-w-lg w-full p-8 space-y-6">
                     <h2
                       id="batch-selection-title"
-                      className="text-2xl font-bold text-blue-900 flex items-center gap-3"
+                      className="text-xl sm:text-2xl font-bold text-blue-900 flex flex-col sm:flex-row items-center sm:items-start gap-3 text-center sm:text-left"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8 text-blue-500"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        aria-hidden="true"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 12l2 2 4-4m0 6a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      Select Batch for <span className="text-blue-700">{selectedOption.optionName}</span>
+                      <img
+                        src={course.courseThumbnail}
+                        alt={course.courseTitle}
+                        className="w-12 h-12 rounded-full object-cover"
+                      />
+                      <span>
+                        Select Batch for <span className="text-blue-700">{selectedOption.optionName}</span>
+                      </span>
                     </h2>
+
+
 
                     {selectedOption.batches && selectedOption.batches.length > 0 ? (
                       <ul className="space-y-4 max-h-72 overflow-y-auto pr-2">
@@ -351,7 +377,7 @@ const CourseDetail = () => {
                           // Optional: allow cancel only if no batch is selected
                           if (!selectedBatch) {
                             setIsBatchModalOpen(false);
-                            setSelectedOption(null); // Optionally clear option if canceling batch selection
+                            // setSelectedOption(null); // Optionally clear option if canceling batch selection
                           } else {
                             alert("Please confirm your batch selection.");
                           }
@@ -364,9 +390,6 @@ const CourseDetail = () => {
                   </div>
                 </div>
               )}
-
-
-
 
 
             </CardContent>

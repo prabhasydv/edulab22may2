@@ -53,8 +53,8 @@ const HeroSection = () => {
       <div className="section-container px-4 sm:px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div className="space-y-6 text-center relative lg:-top-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-mono-black dark:text-white leading-tight">
-            Learn In-Demand Skills for Tomorrow's Jobs
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-mono-black dark:text-white leading-tight">
+          Today's Skills And Certifications Will Be Valued Tomorrow
             <span className="relative block max-w-xs mx-auto"></span>
           </h1>
 

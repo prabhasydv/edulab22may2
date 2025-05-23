@@ -329,15 +329,15 @@ const Footer = () => {
                     className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-950 text-neutral-200 hover:w-32 transition-all overflow-hidden">
                     <span className="hidden group-hover:inline whitespace-nowrap mr-2">GitHub</span>🐙
                   </a>
-                  <a href="#"
+                  <a href="https://www.linkedin.com/company/theeduocean/?viewAsMember=true"
                     className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-900 text-neutral-200 hover:w-36 transition-all overflow-hidden">
                     <span className="hidden group-hover:inline whitespace-nowrap mr-2">LinkedIn</span>💼
                   </a>
-                  <a href="#"
+                  <a href="https://www.facebook.com/TheEduOcean"
                     className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 text-neutral-200 hover:w-36 transition-all overflow-hidden">
                     <span className="hidden group-hover:inline whitespace-nowrap mr-2">Facebook</span>📘
                   </a>
-                  <a href="#"
+                  <a href="https://www.youtube.com/@theeduocean"
                     className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-red-800 text-neutral-200 hover:w-36 transition-all overflow-hidden">
                     <span className="hidden group-hover:inline whitespace-nowrap mr-2">YouTube</span>▶️
                   </a>
