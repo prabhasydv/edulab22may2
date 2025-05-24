@@ -408,43 +408,84 @@ export const getCourseLecture = async (req,res) => {
     }
 }
 
-export const editLecture = async (req,res) => {
-    try {
-        const {lectureTitle, videoInfo, isPreviewFree} = req.body;
+// export const editLecture = async (req,res) => {
+//     try {
+//         const {lectureTitle, videoInfo, isPreviewFree} = req.body;
         
-        const {courseId, lectureId} = req.params;
-        const lecture = await Lecture.findById(lectureId);
-        if(!lecture){
-            return res.status(404).json({
-                message:"Lecture not found!"
-            })
-        }
+//         const {courseId, lectureId} = req.params;
+//         const lecture = await Lecture.findById(lectureId);
+//         if(!lecture){
+//             return res.status(404).json({
+//                 message:"Lecture not found!"
+//             })
+//         }
 
-        // update lecture
-        if(lectureTitle) lecture.lectureTitle = lectureTitle;
-        if(videoInfo?.videoUrl) lecture.videoUrl = videoInfo.videoUrl;
-        if(videoInfo?.publicId) lecture.publicId = videoInfo.publicId;
-        lecture.isPreviewFree = isPreviewFree;
+//         // update lecture
+//         if(lectureTitle) lecture.lectureTitle = lectureTitle;
+//         if(videoInfo?.videoUrl) lecture.videoUrl = videoInfo.videoUrl;
+//         if(videoInfo?.publicId) lecture.publicId = videoInfo.publicId;
+//         lecture.isPreviewFree = isPreviewFree;
 
-        await lecture.save();
+//         await lecture.save();
 
-        // Ensure the course still has the lecture id if it was not aleardy added;
-        const course = await Course.findById(courseId);
-        if(course && !course.lectures.includes(lecture._id)){
-            course.lectures.push(lecture._id);
-            await course.save();
-        };
-        return res.status(200).json({
-            lecture,
-            message:"Lecture updated successfully."
-        })
+//         // Ensure the course still has the lecture id if it was not aleardy added;
+//         const course = await Course.findById(courseId);
+//         if(course && !course.lectures.includes(lecture._id)){
+//             course.lectures.push(lecture._id);
+//             await course.save();
+//         };
+//         return res.status(200).json({
+//             lecture,
+//             message:"Lecture updated successfully."
+//         })
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(500).json({
+//             message:"Failed to edit lectures"
+//         })
+//     }
+// }
+export const editLecture = async (req, res) => {
+    try {
+      const { lectureTitle, lectureDescription, videoInfo, isPreviewFree } = req.body;
+      const { courseId, lectureId } = req.params;
+  
+      const lecture = await Lecture.findById(lectureId);
+      if (!lecture) {
+        return res.status(404).json({
+          message: "Lecture not found!",
+        });
+      }
+  
+      // Update lecture fields if they exist in the request
+      if (lectureTitle) lecture.lectureTitle = lectureTitle;
+      if (lectureDescription) lecture.lectureDescription = lectureDescription;
+      if (videoInfo?.videoUrl) lecture.videoUrl = videoInfo.videoUrl;
+      if (videoInfo?.publicId) lecture.publicId = videoInfo.publicId;
+      if (typeof isPreviewFree === "boolean") lecture.isPreviewFree = isPreviewFree;
+  
+      await lecture.save();
+  
+      // Ensure the course still includes the lecture ID
+      const course = await Course.findById(courseId);
+      if (course && !course.lectures.includes(lecture._id)) {
+        course.lectures.push(lecture._id);
+        await course.save();
+      }
+  
+      return res.status(200).json({
+        lecture,
+        message: "Lecture updated successfully.",
+      });
     } catch (error) {
-        console.log(error);
-        return res.status(500).json({
-            message:"Failed to edit lectures"
-        })
+      console.log(error);
+      return res.status(500).json({
+        message: "Failed to edit lecture",
+        error: error.message,
+      });
     }
-}
+  };
+  
 export const removeLecture = async (req,res) => {
     try {
         const {lectureId} = req.params;

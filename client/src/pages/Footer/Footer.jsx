@@ -310,7 +310,7 @@ const Footer = () => {
                     <span className="text-xl text-gray-500 dark:text-gray-400">📞</span>
                     <div>
                       <p className="font-semibold text-gray-800 dark:text-gray-200">Phone:</p>
-                      <p className="text-gray-600 dark:text-gray-300">(+1) (914) 863-1450</p>
+                      <p className="text-gray-600 dark:text-gray-300">+12019754817</p>
                     </div>
                   </div>
 
@@ -325,10 +325,10 @@ const Footer = () => {
 
                 {/* Social Icons */}
                 <div className="mt-6 flex justify-center lg:justify-start gap-4">
-                  <a href="#"
+                  {/* <a href="#"
                     className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-950 text-neutral-200 hover:w-32 transition-all overflow-hidden">
                     <span className="hidden group-hover:inline whitespace-nowrap mr-2">GitHub</span>🐙
-                  </a>
+                  </a> */}
                   <a href="https://www.linkedin.com/company/theeduocean/?viewAsMember=true"
                     className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-900 text-neutral-200 hover:w-36 transition-all overflow-hidden">
                     <span className="hidden group-hover:inline whitespace-nowrap mr-2">LinkedIn</span>💼

@@ -62,7 +62,7 @@ export default function CertificationLogos() {
   const certifications = [
     {
       id: 1,
-      title: 'Scrum Alliance',
+      title: 'Scrum',
       imageUrl: 'https://d2o2utebsixu4k.cloudfront.net/REA-New%20Logo-b5b7e812ead6484baec67fa9d4784a4d.svg',
     },
     {
@@ -87,14 +87,14 @@ export default function CertificationLogos() {
     },
     {
       id: 6,
-      title: 'DevOps Institute ',
+      title: 'DevOps ',
       imageUrl: 'https://d2o2utebsixu4k.cloudfront.net/Badges-03-5e5c5b39fc9345b7abcb578473a22ac4.svg',
     },
-    {
-      id: 7,
-      title: 'DevOps Institute ',
-      imageUrl: 'https://d2o2utebsixu4k.cloudfront.net/Badges-03-5e5c5b39fc9345b7abcb578473a22ac4.svg',
-    },
+    // {
+    //   id: 7,
+    //   title: 'DevOps Institute ',
+    //   imageUrl: 'https://d2o2utebsixu4k.cloudfront.net/Badges-03-5e5c5b39fc9345b7abcb578473a22ac4.svg',
+    // },
   ];
 
   return (

@@ -93,3 +93,13 @@
   outline: none;
   border-color: #3b82f6; /* Blue color for focus state */
 }
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useGetCourseDetailWithStatusQuery } from "@/features/api/purchaseApi";
-import { BadgeInfo, Check, CheckCircle2, Lock } from "lucide-react";
+import { BadgeInfo, Check, CheckCircle2, ChevronDown, ChevronUp, Lock } from "lucide-react";
 import React, { useState } from "react";
 import { FaCertificate, FaClock } from "react-icons/fa";
 import ReactPlayer from "react-player";
@@ -25,6 +25,8 @@ const CourseDetail = () => {
   // const [selectedOption, setSelectedOption] = useState(null);
   const [selectedBatch, setSelectedBatch] = useState(null);
   const [isBatchModalOpen, setIsBatchModalOpen] = useState(false);
+  const [expandedLectureIdx, setExpandedLectureIdx] = React.useState(null);
+
 
 
   // const handleOptionChange = (option) => {
@@ -150,7 +152,7 @@ const CourseDetail = () => {
   <CardHeader>
     <CardTitle>Curriculum</CardTitle>
   </CardHeader>
-  <CardContent className="space-y-3">
+  {/* <CardContent className="space-y-3">
     {course?.lectures?.length > 0 ? (
       course.lectures.map((lecture, idx) => (
         <div
@@ -174,13 +176,69 @@ const CourseDetail = () => {
     ) : (
       <p className="text-gray-500">No lectures available.</p>
     )}
-  </CardContent>
+  </CardContent> */}
+  <CardContent className="space-y-4">
+      {course?.lectures?.length > 0 ? (
+        course.lectures.map((lecture, idx) => {
+          const isExpanded = expandedLectureIdx === idx;
+
+          return (
+            <div
+              key={idx}
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl shadow-sm transition hover:shadow-md"
+            >
+              {/* Header */}
+              <div
+                onClick={() =>
+                  setExpandedLectureIdx(isExpanded ? null : idx)
+                }
+                className="flex justify-between items-center px-5 h-16 cursor-pointer"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                    <Check size={12} className="text-white" />
+                  </div>
+                  <p className="text-base font-medium text-zinc-800 dark:text-zinc-100">
+                    {lecture.lectureTitle}
+                  </p>
+                </div>
+                <div>
+                  {isExpanded ? (
+                    <ChevronUp className="text-zinc-500" size={20} />
+                  ) : (
+                    <ChevronDown className="text-zinc-500" size={20} />
+                  )}
+                </div>
+              </div>
+
+              {/* Smooth Dropdown Description */}
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${
+                  isExpanded
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden px-5 pb-4 text-sm text-zinc-600 dark:text-zinc-400">
+                  {lecture.lectureDescription}
+                </div>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <p className="text-zinc-500 text-sm text-center">
+          No lectures available.
+        </p>
+      )}
+    </CardContent>
+
 </Card>
 
         </div>
 
         {/* Right Side */}
-        <div className="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3 lg:sticky top-[80px] self-start">
           <Card>
             <CardContent className="p-4 flex flex-col">
 
