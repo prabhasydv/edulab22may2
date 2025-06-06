@@ -626,9 +626,9 @@ const Navbar = () => {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                  <DropdownMenuItem>
+                  {/* <DropdownMenuItem>
                     <Link to="my-learning">My learning</Link>
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                   <DropdownMenuItem>
                     {" "}
                     <Link to="profile">Edit Profile</Link>{" "}
@@ -828,9 +828,9 @@ const MobileNavbar = ({ user }) => {
 
             {user ? (
               <>
-                <Link to="/my-learning" onClick={() => setOpen(false)}>
+                {/* <Link to="/my-learning" onClick={() => setOpen(false)}>
                   My Learning
-                </Link>
+                </Link> */}
                 <Link to="/profile" onClick={() => setOpen(false)}>
                   Edit Profile
                 </Link>

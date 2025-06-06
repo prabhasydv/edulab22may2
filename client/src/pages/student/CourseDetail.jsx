@@ -56,7 +56,7 @@ const CourseDetail = () => {
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 mb-5">
       {/* Course Header */}
       <div
         className="text-white"
@@ -149,10 +149,10 @@ const CourseDetail = () => {
             </CardContent>
           </Card> */}
           <Card className="mt-6">
-  <CardHeader>
-    <CardTitle>Curriculum</CardTitle>
-  </CardHeader>
-  {/* <CardContent className="space-y-3">
+            <CardHeader>
+              <CardTitle>Curriculum</CardTitle>
+            </CardHeader>
+            {/* <CardContent className="space-y-3">
     {course?.lectures?.length > 0 ? (
       course.lectures.map((lecture, idx) => (
         <div
@@ -177,63 +177,63 @@ const CourseDetail = () => {
       <p className="text-gray-500">No lectures available.</p>
     )}
   </CardContent> */}
-  <CardContent className="space-y-4">
-      {course?.lectures?.length > 0 ? (
-        course.lectures.map((lecture, idx) => {
-          const isExpanded = expandedLectureIdx === idx;
+            <CardContent className="space-y-4">
+              {course?.lectures?.length > 0 ? (
+                course.lectures.map((lecture, idx) => {
+                  const isExpanded = expandedLectureIdx === idx;
 
-          return (
-            <div
-              key={idx}
-              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl shadow-sm transition hover:shadow-md"
-            >
-              {/* Header */}
-              <div
-                onClick={() =>
-                  setExpandedLectureIdx(isExpanded ? null : idx)
-                }
-                className="flex justify-between items-center px-5 h-16 cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
-                    <Check size={12} className="text-white" />
-                  </div>
-                  <p className="text-base font-medium text-zinc-800 dark:text-zinc-100">
-                    {lecture.lectureTitle}
-                  </p>
-                </div>
-                <div>
-                  {isExpanded ? (
-                    <ChevronUp className="text-zinc-500" size={20} />
-                  ) : (
-                    <ChevronDown className="text-zinc-500" size={20} />
-                  )}
-                </div>
-              </div>
+                  return (
+                    <div
+                      key={idx}
+                      className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl shadow-sm transition hover:shadow-md"
+                    >
+                      {/* Header */}
+                      <div
+                        onClick={() =>
+                          setExpandedLectureIdx(isExpanded ? null : idx)
+                        }
+                        className="flex justify-between items-center px-5 h-16 cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                            <Check size={12} className="text-white" />
+                          </div>
+                          <p className="text-base font-medium text-zinc-800 dark:text-zinc-100">
+                            {lecture.lectureTitle}
+                          </p>
+                        </div>
+                        <div>
+                          {isExpanded ? (
+                            <ChevronUp className="text-zinc-500" size={20} />
+                          ) : (
+                            <ChevronDown className="text-zinc-500" size={20} />
+                          )}
+                        </div>
+                      </div>
 
-              {/* Smooth Dropdown Description */}
-              <div
-                className={`grid transition-all duration-300 ease-in-out ${
-                  isExpanded
-                    ? "grid-rows-[1fr] opacity-100"
-                    : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="overflow-hidden px-5 pb-4 text-sm text-zinc-600 dark:text-zinc-400">
-                  {lecture.lectureDescription}
-                </div>
-              </div>
-            </div>
-          );
-        })
-      ) : (
-        <p className="text-zinc-500 text-sm text-center">
-          No lectures available.
-        </p>
-      )}
-    </CardContent>
+                      {/* Smooth Dropdown Description */}
+                      <div
+                        className={`grid transition-all duration-300 ease-in-out ${isExpanded
+                            ? "grid-rows-[1fr] opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
+                          }`}
+                      >
+                        <div className="overflow-hidden px-5 pb-4 text-sm text-zinc-600 dark:text-zinc-400"
+                          dangerouslySetInnerHTML={{ __html: lecture.lectureDescription }}>
+                          {/* {lecture.lectureDescription} */}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <p className="text-zinc-500 text-sm text-center">
+                  No lectures available.
+                </p>
+              )}
+            </CardContent>
 
-</Card>
+          </Card>
 
         </div>
 

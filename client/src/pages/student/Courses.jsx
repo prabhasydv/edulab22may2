@@ -308,7 +308,7 @@ const Courses = () => {
         <div className="relative mb-8">
           <button
             onClick={() => scrollCategory("left")}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-99 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200"
           >
             <FaChevronLeft />
           </button>
@@ -337,7 +337,7 @@ const Courses = () => {
 
           <button
             onClick={() => scrollCategory("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-99 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200"
           >
             <FaChevronRight />
           </button>
@@ -348,7 +348,7 @@ const Courses = () => {
           <button
             onClick={() => handleSlide("left")}
             disabled={pageIndex === 0 || disableCourseNavigation}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200 disabled:opacity-50"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-99 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200 disabled:opacity-50"
           >
             <FaChevronLeft />
           </button>
@@ -377,7 +377,7 @@ const Courses = () => {
           <button
             onClick={() => handleSlide("right")}
             disabled={pageIndex === paginatedCourses.length - 1 || disableCourseNavigation}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200 disabled:opacity-50"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-99 p-2 rounded-full bg-white dark:bg-gray-700 shadow hover:bg-gray-200 disabled:opacity-50"
           >
             <FaChevronRight />
           </button>

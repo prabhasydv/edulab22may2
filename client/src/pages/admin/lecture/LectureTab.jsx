@@ -195,6 +195,7 @@ import { useEditLectureMutation, useGetLectureByIdQuery, useRemoveLectureMutatio
 import axios from "axios";
 import { Loader2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -319,7 +320,7 @@ const LectureTab = () => {
           />
         </div>
 
-        <div className="my-5">
+        {/* <div className="my-5">
           <Label>Description</Label>
           <Input
             value={lectureDescription}
@@ -327,7 +328,16 @@ const LectureTab = () => {
             type="text"
             placeholder="Brief summary of the lecture"
           />
-        </div>
+        </div> */}
+        <div className="my-5">
+  <Label>Description</Label>
+  <ReactQuill
+    theme="snow"
+    value={lectureDescription}
+    onChange={setLectureDescription}
+    placeholder="Brief summary of the lecture"
+  />
+</div>
 
         <div className="my-5">
           <Label>

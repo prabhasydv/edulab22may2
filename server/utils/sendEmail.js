@@ -14,14 +14,18 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendEmail = (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, phone, message } = req.body; // Include phone
 
   // Prepare email content
   const mailOptions = {
     from: process.env.SMTP_EMAIL,  // Use the SMTP email from the environment variable
     to: process.env.ADMIN_EMAIL,   // Send to the admin email from the environment variable
     subject: 'New Contact Form Submission',
-    text: `You have a new contact form submission from ${name} (${email}).\n\nMessage:\n${message}`,
+    text: `You have a new contact form submission:\n
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Message:\n${message}`,
   };
 
   // Send email
@@ -33,6 +37,7 @@ export const sendEmail = (req, res) => {
     }
   });
 };
+
 
 
 export const submitInstructorApplication = (req, res) => {

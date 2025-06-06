@@ -1,7 +1,7 @@
 "use client";
 
 import { Users, BookOpen, Award, Star } from "lucide-react";
-
+import certi from '../../assets/certi.png'
 const features = [
   {
     id: 1,
@@ -67,20 +67,13 @@ export default function AcceleratorSection() {
           </div>
 
           <div className="order-first md:order-none mb-8 md:mb-0">
-            <div className="relative h-72 md:h-96 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-lg overflow-hidden flex items-center justify-center">
+            <div className="relative h-72 md:h-96 from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-lg overflow-hidden flex items-center justify-center">
               <div className="relative w-3/4 h-3/4 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="mx-auto w-24 h-24 bg-blue-100 dark:bg-blue-700 rounded-full flex items-center justify-center mb-4">
-                    <div className="w-12 h-12 bg-[#c04542] dark:bg-[#f87171] rounded-full" />
-                  </div>
-                  <h3 className="font-bold text-[#363d47] dark:text-gray-100 text-lg">Experience Innovative Learning</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mt-2">
-                    Our unique approach combines theory with practical application
-                  </p>
-                </div>
+          <img src={certi} alt="certification theduocean" className="object-contain rounded-lg"/>
               </div>
             </div>
           </div>
+
 
           <div className="col-span-1 md:col-span-2">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">

@@ -201,6 +201,7 @@ const Footer = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: '', // make sure this exists
     message: "",
   });
   const [submitContactForm, { isLoading, error, isSuccess }] = useSubmitContactFormMutation();
@@ -302,7 +303,7 @@ const Footer = () => {
                     <span className="text-xl text-gray-500 dark:text-gray-400">📍</span>
                     <div>
                       <p className="font-semibold text-gray-800 dark:text-gray-200">Address:</p>
-                      <p className="text-gray-600 dark:text-gray-300">45,3rd floor ,village Dun, industrial complex Dundahera Gurgaon,Haryana-122016</p>
+                      <p className="text-gray-600 dark:text-gray-300">1749 W Peterson Ave Chicago, Illinois(IL), 60660</p>
                     </div>
                   </div>
 
@@ -379,6 +380,22 @@ const Footer = () => {
                     />
                   </div>
 
+                  {/* Phone Number Field */}
+                  <div>
+                    <label htmlFor="phone" className="block text-gray-700 dark:text-gray-300 mb-2">Phone Number <span className="text-xs">(Required)</span></label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      pattern="[0-9]{10}"
+                      title="Please enter a valid 10-digit phone number"
+                      className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
+                    />
+                  </div>
+
                   <div>
                     <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">Your Message <span className="text-xs">(Required)</span></label>
                     <textarea
@@ -406,6 +423,7 @@ const Footer = () => {
                 {error && <p className="mt-4 text-red-500 text-center">Failed to submit. Please try again.</p>}
               </div>
 
+
             </div>
           </div>
         )}
@@ -432,13 +450,13 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4 text-xs text-gray-500 dark:text-gray-400">
-            <a href="#" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
+            <a href="/term&condition.html" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
+            <a href="/term&condition.html" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
               Terms & Conditions
             </a>
-            <a href="#" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
+            <a href="/sitemap.xml" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
               Sitemap
             </a>
             <a href="#" className="hover:text-[#c04542] dark:hover:text-[#f05454]">

@@ -33,6 +33,7 @@ import TestimonialsSection from "./pages/Homepage/Testimonials";
 import WhatsappChat from "./pages/Homepage/WhatsappChat";
 import Interview from "./pages/student/Interview-preprations";
 import Becomeaninstructor from "./pages/student/Become-an-instructor";
+import HighlightC from "./pages/student/highlight-Courses";
 
 const appRouter = createBrowserRouter([
   {
@@ -108,8 +109,11 @@ const appRouter = createBrowserRouter([
       {
         path: "course-detail/:courseId",
         element: (
+          <>
             <CourseDetail />
-
+            <HighlightC/>
+            <Footer />
+          </>
         ),
       },
       {
