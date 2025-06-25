@@ -203,13 +203,23 @@ const Footer = () => {
     email: "",
     phone: '', // make sure this exists
     message: "",
+    termsAccepted: false, // add this line
+
   });
   const [submitContactForm, { isLoading, error, isSuccess }] = useSubmitContactFormMutation();
 
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -286,147 +296,164 @@ const Footer = () => {
         </div>
 
         {/* Modal */}
-        {isModalOpen && (
-          <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-full max-w-6xl sm:max-w-2xl md:max-w-6xl relative flex flex-col md:flex-row overflow-auto max-h-full">
+          {isModalOpen && (
+            <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+              <div className="bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg w-full max-w-6xl relative flex flex-col md:flex-row overflow-y-auto max-h-screen">
 
-              {/* Left Section: Contact Details */}
-              <div className="w-full md:w-1/2 mb-8 md:mb-0 flex flex-col justify-start">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
-                  Please Drop a Message <br />
-                </h2>
-                <p className="mt-4 text-gray-600 dark:text-gray-300">
-                  Get in touch and let me know how I can help. Fill out the form, and I'll be in touch as soon as possible.
-                </p>
-                <div className="mt-6 space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <span className="text-xl text-gray-500 dark:text-gray-400">📍</span>
-                    <div>
-                      <p className="font-semibold text-gray-800 dark:text-gray-200">Address:</p>
-                      <p className="text-gray-600 dark:text-gray-300">1749 W Peterson Ave Chicago, Illinois(IL), 60660</p>
+
+                {/* Left Section */}
+                <div className="w-full md:w-1/2 md:pr-4">
+
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+                    Please Drop a Message
+                  </h2>
+                  <p className="mt-4 text-gray-600 dark:text-gray-300">
+                    Get in touch and let me know how I can help. Fill out the form, and I'll be in touch as soon as possible.
+                  </p>
+
+                  <div className="mt-6 space-y-4">
+                    {/* Address */}
+                    <div className="flex items-start space-x-4">
+                      <span className="text-xl text-gray-500 dark:text-gray-400">📍</span>
+                      <div>
+                        <p className="font-semibold text-gray-800 dark:text-gray-200">Address:</p>
+                        <p className="text-gray-600 dark:text-gray-300">1749 W Peterson Ave, Chicago, IL 60660</p>
+                      </div>
+                    </div>
+
+                    {/* Phone */}
+                    <div className="flex items-start space-x-4">
+                      <span className="text-xl text-gray-500 dark:text-gray-400">📞</span>
+                      <div>
+                        <p className="font-semibold text-gray-800 dark:text-gray-200">Phone:</p>
+                        <p className="text-gray-600 dark:text-gray-300">+12019754817</p>
+                      </div>
+                    </div>
+
+                    {/* Email */}
+                    <div className="flex items-start space-x-4">
+                      <span className="text-xl text-gray-500 dark:text-gray-400">✉️</span>
+                      <div>
+                        <p className="font-semibold text-gray-800 dark:text-gray-200">Email:</p>
+                        <p className="text-gray-600 dark:text-gray-300">info@theduocean.org</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-4">
-                    <span className="text-xl text-gray-500 dark:text-gray-400">📞</span>
-                    <div>
-                      <p className="font-semibold text-gray-800 dark:text-gray-200">Phone:</p>
-                      <p className="text-gray-600 dark:text-gray-300">+12019754817</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <span className="text-xl text-gray-500 dark:text-gray-400">✉️</span>
-                    <div>
-                      <p className="font-semibold text-gray-800 dark:text-gray-200">Email:</p>
-                      <p className="text-gray-600 dark:text-gray-300">info@theduocean.org</p>
-                    </div>
+                  {/* Social Icons */}
+                  <div className="mt-6 flex flex-wrap gap-4">
+                    <a href="https://www.linkedin.com/company/theeduocean/?viewAsMember=true"
+                      className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-900 text-white hover:w-36 transition-all overflow-hidden">
+                      <span className="hidden group-hover:inline whitespace-nowrap mr-2">LinkedIn</span>💼
+                    </a>
+                    <a href="https://www.facebook.com/TheEduOcean"
+                      className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 text-white hover:w-36 transition-all overflow-hidden">
+                      <span className="hidden group-hover:inline whitespace-nowrap mr-2">Facebook</span>📘
+                    </a>
+                    <a href="https://www.youtube.com/@theeduocean"
+                      className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-red-800 text-white hover:w-36 transition-all overflow-hidden">
+                      <span className="hidden group-hover:inline whitespace-nowrap mr-2">YouTube</span>▶️
+                    </a>
                   </div>
                 </div>
 
-                {/* Social Icons */}
-                <div className="mt-6 flex justify-center lg:justify-start gap-4">
-                  {/* <a href="#"
-                    className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-950 text-neutral-200 hover:w-32 transition-all overflow-hidden">
-                    <span className="hidden group-hover:inline whitespace-nowrap mr-2">GitHub</span>🐙
-                  </a> */}
-                  <a href="https://www.linkedin.com/company/theeduocean/?viewAsMember=true"
-                    className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-900 text-neutral-200 hover:w-36 transition-all overflow-hidden">
-                    <span className="hidden group-hover:inline whitespace-nowrap mr-2">LinkedIn</span>💼
-                  </a>
-                  <a href="https://www.facebook.com/TheEduOcean"
-                    className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-700 text-neutral-200 hover:w-36 transition-all overflow-hidden">
-                    <span className="hidden group-hover:inline whitespace-nowrap mr-2">Facebook</span>📘
-                  </a>
-                  <a href="https://www.youtube.com/@theeduocean"
-                    className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full bg-red-800 text-neutral-200 hover:w-36 transition-all overflow-hidden">
-                    <span className="hidden group-hover:inline whitespace-nowrap mr-2">YouTube</span>▶️
-                  </a>
-                </div>
-              </div>
-
-              {/* Right Section: Contact Form */}
-              <div className="w-full md:w-1/2 bg-white dark:bg-gray-700 p-8 rounded-xl shadow-lg border border-gray-300 dark:border-gray-600 relative">
-                <button
-                  onClick={closeModal}
-                  className="absolute top-4 right-4 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
-                >
-                  <X size={24} />
-                </button>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 mb-2">Your Email <span className="text-xs">(Required)</span></label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
-                    />
-                  </div>
-
-                  {/* Phone Number Field */}
-                  <div>
-                    <label htmlFor="phone" className="block text-gray-700 dark:text-gray-300 mb-2">Phone Number <span className="text-xs">(Required)</span></label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      pattern="[0-9]{10}"
-                      title="Please enter a valid 10-digit phone number"
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">Your Message <span className="text-xs">(Required)</span></label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows="4"
-                      className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
-                    />
-                  </div>
+                {/* Right Section (Form) */}
+                <div className="w-full md:w-1/2 mt-8 md:mt-0 bg-white dark:bg-gray-700 p-6 sm:p-8 rounded-xl shadow-lg border border-gray-300 dark:border-gray-600 relative">
 
                   <button
-                    type="submit"
-                    disabled={isLoading}
-                    className={`w-full py-3 px-6 bg-blue-500 text-white rounded-lg font-semibold ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
+                    onClick={closeModal}
+                    className="absolute top-4 right-4 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
                   >
-                    {isLoading ? "Submitting..." : "Submit"}
+                    <X size={24} />
                   </button>
-                </form>
 
-                {/* Success/Error Message */}
-                {isSuccess && <p className="mt-4 text-green-500 text-center">Your message was submitted successfully!</p>}
-                {error && <p className="mt-4 text-red-500 text-center">Failed to submit. Please try again.</p>}
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 mb-2">Your Email <span className="text-xs">(Required)</span></label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="phone" className="block text-gray-700 dark:text-gray-300 mb-2">Phone Number <span className="text-xs">(Required)</span></label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        required
+                        pattern="[0-9]{10}"
+                        title="Please enter a valid 10-digit phone number"
+                        className="w-full px-4 py-3 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 mb-2">Your Message <span className="text-xs">(Required)</span></label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        rows="4"
+                        className="w-full bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 outline-none"
+                      />
+                    </div>
+
+                    <div className="flex items-start space-x-2">
+                      <input
+                        type="checkbox"
+                        id="terms"
+                        name="termsAccepted"
+                        checked={formData.termsAccepted}
+                        onChange={handleInputChange}
+                        required
+                        className="mt-1"
+                      />
+                      <label htmlFor="terms" className="text-gray-700 dark:text-gray-300 text-sm">
+                        I agree to the <a href="/terms.html" className="text-blue-500 underline" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.
+                      </label>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isLoading || !formData.termsAccepted}
+                      className={`w-full py-3 px-6 bg-blue-500 text-white rounded-lg font-semibold transition ${isLoading || !formData.termsAccepted ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
+                    >
+                      {isLoading ? "Submitting..." : "Submit"}
+                    </button>
+                  </form>
+
+                  {/* Feedback Message */}
+                  {isSuccess && <p className="mt-4 text-green-500 text-center">Your message was submitted successfully!</p>}
+                  {error && <p className="mt-4 text-red-500 text-center">Failed to submit. Please try again.</p>}
+                </div>
               </div>
-
-
             </div>
-          </div>
-        )}
+          )}
+
 
 
 
@@ -450,10 +477,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-4 text-xs text-gray-500 dark:text-gray-400">
-            <a href="/term&condition.html" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
+            <a href="/terms.html" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
               Privacy Policy
             </a>
-            <a href="/term&condition.html" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
+            <a href="/terms.html" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
               Terms & Conditions
             </a>
             <a href="/sitemap.xml" className="hover:text-[#c04542] dark:hover:text-[#f05454]">

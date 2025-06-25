@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import { Course } from "../models/course.model.js";
 import { Lecture } from "../models/lecture.model.js";
 import {deleteMediaFromCloudinary, deleteVideoFromCloudinary, uploadMedia} from "../utils/cloudinary.js";
+import slugify from 'slugify'; // you can use this package for better slug generation
+
 
 export const createCourse = async (req,res) => {
     try {
@@ -30,34 +32,7 @@ export const createCourse = async (req,res) => {
     }
 }
 
-// export const createCourse = async (req, res) => {
-//     try {
-//         const { courseTitle, category, pricingOptions = [] } = req.body;
 
-//         if (!courseTitle || !category) {
-//             return res.status(400).json({
-//                 message: "Course title and category is required.",
-//             });
-//         }
-
-//         const course = await Course.create({
-//             courseTitle,
-//             category,
-//             creator: req.id,
-//             pricingOptions, // new line
-//         });
-
-//         return res.status(201).json({
-//             course,
-//             message: "Course created.",
-//         });
-//     } catch (error) {
-//         console.log(error);
-//         return res.status(500).json({
-//             message: "Failed to create course",
-//         });
-//     }
-// };
 
 
 export const searchCourse = async (req,res) => {

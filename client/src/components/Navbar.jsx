@@ -38,6 +38,333 @@ import { MdBarChart } from "react-icons/md";
 import theeduocenlogo from '../assets/theeduoceanlogo.png'; // adjust path as needed
 
 
+// const Data = {
+//   "Project Management": {
+//     icon: <FiRefreshCw className="mr-2 text-gray-500 dark:text-gray-300" />,
+//     items: [
+//       {
+//         name: "PMP Certification Training",
+//         link: "/course/search?query=PMP",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/prince-2-practitioner-and-foundation.svg",
+//       },
+//       {
+//         name: "Certified Scrum Master(CSM)Certification",
+//         link: "/course/search?query=CAPM",
+//         icon: "https://www.agile42.com/wp-content/media/images/csm_logo_jwfqFz7.original.png",
+//       },
+//       {
+//         name: "Project Management Training [Masters...",
+//         link: "/course/search?query=RMP",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/PMP.svg",
+//       },
+//       {
+//         name: "Professional Scrum Master (PSM)Certification Training)",
+//         link: "/course/search?query=Prince",
+//         icon: "https://scrumorg-website-prod.s3.amazonaws.com/drupal/inline-images/PSM-I_600.png",
+//       },
+//       {
+//         name: "PRINCE2 Foundation & Practitioner Certification Course",
+//         link: "/course/search?query=Prince",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/prince-2-practitioner-and-foundation.svg",
+//       },
+//       {
+//         name: "Advance Executive Certificate in Supply Chain Strategy",
+//         link: "/course/search?query=Chain",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//       {
+//         name: "CSPO Certification Training Course",
+//         link: "/course/search?query=CSPO",
+//         icon: "https://www.agile42.com/wp-content/media/images/cspo_logo_VkQvEku.original.png",
+//       },
+//       {
+//         name: "Executive Post Graduate Programme in HRM",
+//         link: "/course/search?query=HRM",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//       {
+//         name: "Advance Executive Certificate in Product Management",
+//         link: "/course/search?query=Product",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//       {
+//         name: "Executive Development Programme in General Management",
+//         link: "/course/search?query=General",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//       {
+//         name: "Advance Executive Certificate in Business Management in digital",
+//         link: "/course/search?query=Business",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//       {
+//         name: "PMI agile Certified Practitioner Training",
+//         link: "/course/search?query=PMI",
+//         icon: "https://d20f8czie2ltiw.cloudfront.net/images/vendors/pmi-atp-badge-2024-rgb.png",
+//       },
+//       {
+//         name: "Project and Infrastructure Financing",
+//         link: "/course/search?query=Financing",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//       {
+//         name: "PMI-RMP Certification Training Course",
+//         link: "/course/search?query=PMI-RMP",
+//         icon: "https://d20f8czie2ltiw.cloudfront.net/images/vendors/pmi-atp-badge-2024-rgb.png",
+//       },
+//       {
+//         name: "Six Sigma Green Belt Certification Training",
+//         link: "/course/search?query=Sigma",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//       {
+//         name: "PgMP Certification Training Course",
+//         link: "/course/search?query=PgMP",
+//         icon: "https://d20f8czie2ltiw.cloudfront.net/images/vendors/pmi-atp-badge-2024-rgb.png",
+//       },
+//     ],
+//   },
+
+//   "Data Science": {
+//     icon: <FiDatabase className="mr-2 text-gray-500 dark:text-gray-300" />,
+//     items: [
+//       {
+//         name: "Python for Data Science",
+//         link: "/course/search?query=Python",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "BI Visualization",
+//         link: "/course/search?query=BI",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/Microsoft-Power-BI.svg",
+//       },
+//       {
+//         name: "Cyber Security",
+//         link: "/course/search?query=Cyber",
+//         icon: "https://img.icons8.com/color/48/000000/cyber-security.png",
+//       },
+//       {
+//         name: "Web Development",
+//         link: "/course/search?query=Web-development",
+//         icon: "https://img.icons8.com/color/48/000000/source-code.png",
+//       },
+//       {
+//         name: "Blockchain",
+//         link: "/course/search?query=blockchain",
+//         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
+//       },
+//     ],
+//   },
+
+//   "Cloud Computing": {
+//     icon: <FiCloud className="mr-2 text-gray-500 dark:text-gray-300" />,
+//     items: [
+//       {
+//         name: "AWS Solutions Architecture Associate",
+//         link: "/course/search?query=AWS",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "AWS Solutions Architecture Professional",
+//         link: "/course/search?query=AWS",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "AWS Certified Cloud Practitioner CLF-C01",
+//         link: "/course/search?query=AWS",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "AWS Certified DevOps Engineer - Professional DOP-C01",
+//         link: "/course/search?query=devops",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "AZ 900 Exam: Microsoft Azure Fundamentals",
+//         link: "/course/search?query=Azure",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
+//       },
+//       {
+//         name: "AZ-104: Microsoft Azure Administrator",
+//         link: "/course/search?query=Administrator",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
+//       },
+//       {
+//         name: "AZ 305: Designing Microsoft Azure Infrastructure Solutions",
+//         link: "/course/search?query=Infrastructure",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
+//       },
+//       {
+//         name: "AZ-204: Developing Solutions For Microsoft Azure Certification",
+//         link: "/course/search?query=Azure",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
+//       },
+//       {
+//         name: "Microsoft Azure DevOps 400",
+//         link: "/course/search?query=devops",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
+//       },
+//       {
+//         name: "DevOps Certification Courses Training",
+//         link: "/course/search?query=devops",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//     ],
+//   },
+
+//   "ITSM": {
+//     icon: <FiGitCommit className="mr-2 text-gray-500 dark:text-gray-300" />,
+//     items: [
+//       {
+//         name: "ITIL Foundation",
+//         link: "/course/search?query=ITIL",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "DevOps Practitioner",
+//         link: "/course/search?query=devops",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//     ],
+//   },
+
+//   "DevOps": {
+//     icon: <FaTerminal className="mr-2 text-neutral-500" />,
+//     items: [
+//       {
+//         name: "Kubernetes Certification Training Course: Administrator (CKA)",
+//         link: "/course/search?query=kubernetes",
+//         icon: "https://www.cloudops.com/images/cka-logo.png",
+//       },
+//       {
+//         name: "Certified Kubernetes Application Developer (CKAD)",
+//         link: "/course/search?query=CKAD",
+//         icon: "https://miro.medium.com/v2/resize:fit:1024/1*JxNyk6ELTDf6N9QTCqVHKw.png",
+//       },
+//     ],
+//   },
+
+//   "BI & Visualization": {
+//     icon: <MdBarChart className="mr-2 text-neutral-500 text-xl" />,
+//     items: [
+//       {
+//         name: "Power BI / Tableau",
+//         link: "/course/search?query=Power-BI",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//     ],
+//   },
+
+//   "Cyber Security": {
+//     icon: <FiShield className="mr-2 text-neutral-500" />,
+//     items: [
+//       {
+//         name: "OSCP Certification Exam",
+//         link: "/course/search?query=OSCP",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "Certified Information Systems Security Professional(CISSP)",
+//         link: "/course/search?query=CISSP",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "Certified Cloud Security Professional(CISSP)",
+//         link: "/course/search?query=CISSP",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "Certified Information System Auditor(CISA)",
+//         link: "/course/search?query=CISA",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "Certified Information Security Manager (CISM)",
+//         link: "/course/search?query=CISM",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "AWS Security Certification Courses Training",
+//         link: "/course/search?query=AWS",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "AWS Certified Security-Specialty(Security Engineering on AWS) ",
+//         link: "/course/search?query=AWS",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "CompTIA-SYO-601-Security+ SYO-601",
+//         link: "/course/search?query=CompTI",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+//       },
+//       {
+//         name: "CompTIA Network+ (N10-008)N10-008",
+//         link: "/course/search?query=CompTIA",
+//         icon: "Confidentiality, Integrity & Availability(CIA triad)",
+//       },
+//     ],
+//   },
+
+//   "Agile Management": {
+//     icon: <FaCode className="mr-2 text-neutral-500" />,
+//     items: [
+//       {
+//         name: "Ethereum Development",
+//         link: "/course/search?query=ethereum-development",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//     ],
+//   },
+
+//   "Software Testing": {
+//     icon: <FaCube className="mr-2 text-neutral-500" />,
+//     items: [
+//       {
+//         name: "Selenium Essentials Training",
+//         link: "/course/search?query=selenium",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//       {
+//         name: "ISTQB Foundation Level",
+//         link: "/course/search?query=ISTQB",
+//         icon: "https://register.expleoacademy.com/content/img/ISTQB_AccreditedTrainingProvider.png",
+//       },
+//       {
+//         name: "Cucumber Training",
+//         link: "/course/search?query=Cucumber",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//     ],
+//   },
+//   "Others": {
+//     icon: <FiGitCommit className="mr-2 text-gray-500 dark:text-gray-300" />,
+//     items: [
+//       {
+//         name: "Graduate Record Examinations(GRE)",
+//         link: "/course/search?query=web3-fundamentals",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//       {
+//         name: "Graduate Management Admission Test(GMAT)",
+//         link: "/course/search?query=ethereum-development",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//       {
+//         name: "Statical Process Control (SPC)",
+//         link: "/course/search?query=SPC",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//       {
+//         name: "Salesforce : Administrator and App Builder",
+//         link: "/course/search?query=salesforce",
+//         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+//       },
+//     ],
+//   },
+// };
+
+
 const Data = {
   "Project Management": {
     icon: <FiRefreshCw className="mr-2 text-gray-500 dark:text-gray-300" />,
@@ -48,19 +375,9 @@ const Data = {
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/prince-2-practitioner-and-foundation.svg",
       },
       {
-        name: "Certified Scrum Master(CSM)Certification",
-        link: "/course/search?query=CAPM",
-        icon: "https://www.agile42.com/wp-content/media/images/csm_logo_jwfqFz7.original.png",
-      },
-      {
         name: "Project Management Training [Masters...",
         link: "/course/search?query=RMP",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/PMP.svg",
-      },
-      {
-        name: "Professional Scrum Master (PSM)Certification Training)",
-        link: "/course/search?query=Prince",
-        icon: "https://scrumorg-website-prod.s3.amazonaws.com/drupal/inline-images/PSM-I_600.png",
       },
       {
         name: "PRINCE2 Foundation & Practitioner Certification Course",
@@ -73,54 +390,39 @@ const Data = {
         icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
       },
       {
-        name: "CSPO Certification Training Course",
-        link: "/course/search?query=CSPO",
-        icon: "https://www.agile42.com/wp-content/media/images/cspo_logo_VkQvEku.original.png",
-      },
-      {
-        name: "Executive Post Graduate Programme in HRM",
-        link: "/course/search?query=HRM",
-        icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
-      },
-      {
-        name: "Advance Executive Certificate in Product Management",
-        link: "/course/search?query=Product",
-        icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
-      },
-      {
-        name: "Executive Development Programme in General Management",
-        link: "/course/search?query=General",
-        icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
-      },
-      {
-        name: "Advance Executive Certificate in Business Management in digital",
-        link: "/course/search?query=Business",
-        icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
-      },
-      {
-        name: "PMI agile Certified Practitioner Training",
-        link: "/course/search?query=PMI",
-        icon: "https://d20f8czie2ltiw.cloudfront.net/images/vendors/pmi-atp-badge-2024-rgb.png",
-      },
-      {
-        name: "Project and Infrastructure Financing",
-        link: "/course/search?query=Financing",
-        icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
-      },
-      {
-        name: "PMI-RMP Certification Training Course",
+        name: "PMI-RMP Exam Prep (PMI-RMP)®️",
         link: "/course/search?query=PMI-RMP",
         icon: "https://d20f8czie2ltiw.cloudfront.net/images/vendors/pmi-atp-badge-2024-rgb.png",
       },
       {
-        name: "Six Sigma Green Belt Certification Training",
-        link: "/course/search?query=Sigma",
-        icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
-      },
-      {
-        name: "PgMP Certification Training Course",
+        name: "Program Management Professional (PgMP)®",
         link: "/course/search?query=PgMP",
         icon: "https://d20f8czie2ltiw.cloudfront.net/images/vendors/pmi-atp-badge-2024-rgb.png",
+      },
+      {
+        name: "Portfolio Management Professional (PfMP)",
+        link: "/course/search?query=PfMP",
+        icon: "https://d20f8czie2ltiw.cloudfront.net/images/vendors/pmi-atp-badge-2024-rgb.png",
+      },
+      {
+        name: "Certified Associate in Project Management (CAPM)®️",
+        link: "/course/search?query=CAPM",
+        icon: " ",
+      },
+      {
+        name: "PMI-ACP® Certification Training Course",
+        link: "/course/search?query=PMI-ACP",
+        icon: " ",
+      },
+      {
+        name: "CBAP® (Certified Business Analysis Professional) Certification Training",
+        link: "/course/search?query=CBAP",
+        icon: " ",
+      },
+      {
+        name: "PMI Scheduling Professional (PMI-SP) Training & Certification Course",
+        link: "/course/search?query=PMI-SP",
+        icon: " ",
       },
     ],
   },
@@ -134,25 +436,11 @@ const Data = {
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "BI Visualization",
-        link: "/course/search?query=BI",
-        icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/Microsoft-Power-BI.svg",
+        name: "Data Scientist (IBM)",
+        link: "/course/search?query=Data Scientist (IBM)",
+        icon: " ",
       },
-      {
-        name: "Cyber Security",
-        link: "/course/search?query=Cyber",
-        icon: "https://img.icons8.com/color/48/000000/cyber-security.png",
-      },
-      {
-        name: "Web Development",
-        link: "/course/search?query=Web-development",
-        icon: "https://img.icons8.com/color/48/000000/source-code.png",
-      },
-      {
-        name: "Blockchain",
-        link: "/course/search?query=blockchain",
-        icon: "https://img.icons8.com/color/48/000000/blockchain-technology.png",
-      },
+      
     ],
   },
 
@@ -160,27 +448,27 @@ const Data = {
     icon: <FiCloud className="mr-2 text-gray-500 dark:text-gray-300" />,
     items: [
       {
-        name: "AWS Solutions Architecture Associate",
+        name: "AWS Solutions Architect Associate (SAA – C03) Training & Certification",
         link: "/course/search?query=AWS",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "AWS Solutions Architecture Professional",
+        name: "AWS Solutions Architect Professional (SAP-C01) Training & Certification",
         link: "/course/search?query=AWS",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "AWS Certified Cloud Practitioner CLF-C01",
+        name: "AWS Certified Cloud Practitioner (CLF-C01) Certification Training",
         link: "/course/search?query=AWS",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "AWS Certified DevOps Engineer - Professional DOP-C01",
+        name: "AWS Certified DevOps Engineer -Professional ( DOP-C01 )",
         link: "/course/search?query=devops",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "AZ 900 Exam: Microsoft Azure Fundamentals",
+        name: "AZ-900T00: Microsoft Azure Fundamentals Course",
         link: "/course/search?query=Azure",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
       },
@@ -195,19 +483,49 @@ const Data = {
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
       },
       {
-        name: "AZ-204: Developing Solutions For Microsoft Azure Certification",
+        name: "AZ-204: Developing Solutions for Microsoft Azure Certification",
         link: "/course/search?query=Azure",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
       },
       {
-        name: "Microsoft Azure DevOps 400",
+        name: "Microsoft Azure DevOps Engineer Expert AZ-400 Certification",
         link: "/course/search?query=devops",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AZURE.svg",
       },
       {
-        name: "DevOps Certification Courses Training",
-        link: "/course/search?query=devops",
+        name: "AWS Certified Security – Specialty ( Security Engineering on AWS ) SCS-C01",
+        link: "/course/search?query=AWS",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+      },
+      {
+        name: "AZ-500 : Microsoft Azure Security Engineer - Associate Certification",
+        link: "/course/search?query=AWS",
+        icon: " ",
+      },
+      {
+        name: "Google Professional Cloud Architect Training ( GCP)",
+        link: "/course/search?query=GCP",
+        icon: " ",
+      },
+      {
+        name: "AI-102T00: Designing and Implementing a Microsoft Azure AI Solution Course",
+        link: "/course/search?query=AI-102T00",
+        icon: " ",
+      },
+      {
+        name: "DP-600T00: Microsoft Fabric Analytics Engineer Course",
+        link: "/course/search?query=DP-600T00",
+        icon: " ",
+      },
+      {
+        name: "SC-200T00: Microsoft Security Operations Analyst Course",
+        link: "/course/search?query=SC-200T00",
+        icon: " ",
+      },
+      {
+        name: "SC-300T00: Microsoft Identity and Access Administrator Course",
+        link: "/course/search?query=SC-300T00",
+        icon: " ",
       },
     ],
   },
@@ -216,15 +534,11 @@ const Data = {
     icon: <FiGitCommit className="mr-2 text-gray-500 dark:text-gray-300" />,
     items: [
       {
-        name: "ITIL Foundation",
-        link: "/course/search?query=ITIL",
+        name: "ITIL®️ 4 Foundation ITIL®️ Foundation V4",
+        link: "/course/search?query=ITIL Foundation V4",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
-      {
-        name: "DevOps Practitioner",
-        link: "/course/search?query=devops",
-        icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
-      },
+      
     ],
   },
 
@@ -241,6 +555,21 @@ const Data = {
         link: "/course/search?query=CKAD",
         icon: "https://miro.medium.com/v2/resize:fit:1024/1*JxNyk6ELTDf6N9QTCqVHKw.png",
       },
+      {
+        name: "DevOps Certification & Training Courses",
+        link: "/course/search?query=devops",
+        icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+      },
+      {
+        name: "AWS Certified DevOps Engineer -Professional ( DOP-C01 )",
+        link: "/course/search?query=devops/DOP-C01",
+        icon: " ",
+      },
+      {
+        name: "DevOps Plus Program – Certified by PwC Training & Certification Course",
+        link: "/course/search?query=devops",
+        icon: " ",
+      },
     ],
   },
 
@@ -248,9 +577,14 @@ const Data = {
     icon: <MdBarChart className="mr-2 text-neutral-500 text-xl" />,
     items: [
       {
-        name: "Power BI / Tableau",
+        name: "Tableau Certification Training Course",
         link: "/course/search?query=Power-BI",
-        icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+        icon: " ",
+      },
+      {
+        name: "PL-300T00: Microsoft Power BI Data Analyst Course",
+        link: "/course/search?query=PL-300T00",
+        icon: " ",
       },
     ],
   },
@@ -259,8 +593,8 @@ const Data = {
     icon: <FiShield className="mr-2 text-neutral-500" />,
     items: [
       {
-        name: "OSCP Certification Exam",
-        link: "/course/search?query=OSCP",
+        name: "Offensive Security Certified Professional (OSCP/Pen 200) Certification Exam",
+        link: "/course/search?query=OSCP/Pen 200",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
@@ -269,12 +603,12 @@ const Data = {
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "Certified Cloud Security Professional(CISSP)",
-        link: "/course/search?query=CISSP",
+        name: "Certified Cloud Security Professional (CCSP) Training & Certification",
+        link: "/course/search?query=CCSP",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "Certified Information System Auditor(CISA)",
+        name: "Certified Information Systems Auditor (CISA)",
         link: "/course/search?query=CISA",
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
@@ -284,24 +618,84 @@ const Data = {
         icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
       },
       {
-        name: "AWS Security Certification Courses Training",
-        link: "/course/search?query=AWS",
-        icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
-      },
-      {
-        name: "AWS Certified Security-Specialty(Security Engineering on AWS) ",
-        link: "/course/search?query=AWS",
-        icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
-      },
-      {
-        name: "CompTIA-SYO-601-Security+ SYO-601",
-        link: "/course/search?query=CompTI",
-        icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
-      },
-      {
-        name: "CompTIA Network+ (N10-008)N10-008",
+        name: "CompTIA-SY0-701-Security+ Certification ( SY0-701 )",
         link: "/course/search?query=CompTIA",
-        icon: "Confidentiality, Integrity & Availability(CIA triad)",
+        icon: "https://d2o2utebsixu4k.cloudfront.net/mega_menu/AWS.svg",
+      },
+      {
+        name: "CompTIA Network+ Certification Course (Exam N10-009)",
+        link: "/course/search?query=CompTIA",
+        icon: " ",
+      },
+      {
+        name: "CompTIA A+ Core 1 and Core 2 (220-1101 and 220-1102) Exam Prep e-Learning Bundle",
+        link: "/course/search?query=CompTIA A+",
+        icon: " ",
+      },
+      {
+        name: "Cyber Security Master’s Program",
+        link: "/course/search?query=Cyber Security",
+        icon: " ",
+      },
+      {
+        name: "CCNP Wireless Training And Certification",
+        link: "/course/search?query=CCNP",
+        icon: " ",
+      },
+      {
+        name: "CompTIA Cybersecurity Analyst (CySA+) Course",
+        link: "/course/search?query=CySA+",
+        icon: " ",
+      },
+      {
+        name: "CompTIA Pentest+ ( PT0-002) Course",
+        link: "/course/search?query=CompTIA Pentest+",
+        icon: " ",
+      },
+      {
+        name: "CompTIA Linux+ XK0-005 Course",
+        link: "/course/search?query=CompTIA Linux+",
+        icon: " ",
+      },
+      {
+        name: "CompTIA Data+ DA0-001 Course",
+        link: "/course/search?query=CompTIA Data+",
+        icon: " ",
+      },
+      {
+        name: "CompTIA Advanced Security Practitioner (CASP+)(CAS-004) Course",
+        link: "/course/search?query=CASP+/CAS-004",
+        icon: " ",
+      },
+      {
+        name: "CompTIA Cloud+ Certification Training ( CV0-004 ) Course",
+        link: "/course/search?query=CompTIA Cloud+",
+        icon: " ",
+      },
+      {
+        name: "CompTIA SecurityX CAS-005 Certification Training Course",
+        link: "/course/search?query=CompTIA SecurityX",
+        icon: " ",
+      },
+      {
+        name: "CompTIA Server+ Certification Training (SK0-005) Course",
+        link: "/course/search?query=CompTIA Server+",
+        icon: " ",
+      },
+      {
+        name: "Certified in Governance, Risk and Compliance certification & training (CGRC) Course",
+        link: "/course/search?query=CGRC",
+        icon: " ",
+      },
+      {
+        name: "Implementing and Administering Cisco Solutions (CCNA) v2.1 Course",
+        link: "/course/search?query=CCNA",
+        icon: " ",
+      },
+      {
+        name: "Implementing Cisco Application Centric Infrastructure (DCACI) v1.2 Course",
+        link: "/course/search?query=DCACI",
+        icon: " ",
       },
     ],
   },
@@ -309,11 +703,56 @@ const Data = {
   "Agile Management": {
     icon: <FaCode className="mr-2 text-neutral-500" />,
     items: [
-      {
-        name: "Ethereum Development",
-        link: "/course/search?query=ethereum-development",
-        icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
+       {
+        name: "Certified Scrum Master(CSM)Certification",
+        link: "/course/search?query=CSM",
+        icon: "https://www.agile42.com/wp-content/media/images/csm_logo_jwfqFz7.original.png",
       },
+       {
+        name: "CSPO Certification Training Course",
+        link: "/course/search?query=CSPO",
+        icon: "https://www.agile42.com/wp-content/media/images/cspo_logo_VkQvEku.original.png",
+      },
+      {
+        name: "Leading SAFe® 6.0 Training with SAFe Agile Certification",
+        link: "/course/search?query=SAFe Agile",
+        icon: " ",
+      },
+      {
+        name: "SAFe® 6.0 Release Train Engineer (RTE) Certification",
+        link: "/course/search?query=Release Train Engineer (RTE)",
+        icon: " ",
+      },
+      {
+        name: "Agile Leadership Masters Program",
+        link: "/course/search?query=Agile Masters Program",
+        icon: " ",
+      },
+      {
+        name: "Advanced Certified ScrumMaster (A-CSM)",
+        link: "/course/search?query=A-CSM",
+        icon: " ",
+      },
+      {
+        name: "SAFe Product Owner/Product Manager (POPM) Certification Training",
+        link: "/course/search?query=POPM",
+        icon: " ",
+      },
+      {
+        name: "Advanced Certified Scrum Product Owner (A-CSPO) Certification Training",
+        link: "/course/search?query=A-CSPO",
+        icon: " ",
+      },
+      {
+        name: "Professional Scrum Master (PSM) Certification Training",
+        link: "/course/search?query=PSM",
+        icon: " ",
+      },
+      {
+        name: "Professional Scrum Master™ (PSM) II Certification Training",
+        link: "/course/search?query=Prince",
+        icon: " ",
+      },   
     ],
   },
 
@@ -326,7 +765,7 @@ const Data = {
         icon: "https://d2o2utebsixu4k.cloudfront.net/assets/resources/CSM.svg",
       },
       {
-        name: "ISTQB Foundation Level",
+        name: "ISTQB ®️ Foundation Level",
         link: "/course/search?query=ISTQB",
         icon: "https://register.expleoacademy.com/content/img/ISTQB_AccreditedTrainingProvider.png",
       },
@@ -363,7 +802,6 @@ const Data = {
     ],
   },
 };
-
 const categories = Object.keys(Data);
 
 
@@ -510,7 +948,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Right - Items */}
-                <div className="w-full md:w-3/4">
+                <div className="w-full md:w-3/4 max-h-[70vh] overflow-y-auto pr-2">
                   {/* Title for Right Section */}
                   <div className="mb-4">
                     <div className="flex items-center gap-2 mb-1">

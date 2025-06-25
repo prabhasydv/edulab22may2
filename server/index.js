@@ -88,7 +88,7 @@ app.use(
 );
 
 // ✅ Serve static files from public (for sitemap.xml & robots.txt)
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 
 // ✅ Serve React static build
 const buildPath = path.join(__dirname, "../client/dist");
