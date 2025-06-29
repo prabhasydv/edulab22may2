@@ -34,6 +34,9 @@ import WhatsappChat from "./pages/Homepage/WhatsappChat";
 import Interview from "./pages/student/Interview-preprations";
 import Becomeaninstructor from "./pages/student/Become-an-instructor";
 import HighlightC from "./pages/student/highlight-Courses";
+import InterviewQuestions from "./pages/student/Interview-Questions";
+import CategoryPage from "./pages/student/CategoryPage";
+import CourseQuestions from "./pages/student/CourseQuestion";
 
 const appRouter = createBrowserRouter([
   {
@@ -74,6 +77,32 @@ const appRouter = createBrowserRouter([
           </>
         ),
       },
+      {
+        path: "interview-questions",
+        element: (
+          <>
+          <InterviewQuestions/>
+          <Footer/>
+          </>
+        ),
+      },
+      {
+        path: "category/:slug",
+        element: (
+          <>
+            <CategoryPage />
+            <Footer />
+          </>
+        ),
+      },
+      {
+        path: "course/:slug",
+        element: (
+          <>
+            <CourseQuestions />
+          </>
+        ),
+      },      
       {
         path: "login",
         element: (

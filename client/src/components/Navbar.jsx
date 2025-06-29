@@ -1032,10 +1032,10 @@ const Navbar = () => {
 
           <div className="relative group">
             <Link
-              to="/interview-preprations"
+              to="/interview-questions"
               className="flex items-center whitespace-nowrap text-[#363d47] hover:text-[#5358ec] px-2 py-2 text-sm font-medium dark:text-gray-200"
             >
-              Project Help
+            Interview Questions
             </Link>
           </div>
         </div>
