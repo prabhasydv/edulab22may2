@@ -293,6 +293,7 @@ export const getCourseById = async (req,res) => {
     }
 }
 
+
 // export const createLecture = async (req,res) => {
 //     try {
 //         const {lectureTitle} = req.body;

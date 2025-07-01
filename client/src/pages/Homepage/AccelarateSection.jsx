@@ -35,82 +35,97 @@ const features = [
 
 export default function AcceleratorSection() {
   return (
-    <section className="py-16 px-4 md:px-8 bg-white dark:bg-gray-900 transition-colors">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#363d47] dark:text-gray-100 mb-4">
-            Accelerate Your Career with Our Expert Services
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            We've created a comprehensive learning platform to help you master in-demand skills and
-            advance your career faster.
-          </p>
-        </div>
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors">
+  <div className="max-w-7xl mx-auto">
+    {/* Section Heading */}
+    <div className="text-center mb-12 sm:mb-16">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#363d47] dark:text-gray-100 mb-4">
+        Accelerate Your Career with Our Expert Services
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">
+        We've created a comprehensive learning platform to help you master in-demand skills and
+        advance your career faster.
+      </p>
+    </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <div className="grid grid-cols-1 gap-8">
-              {features.slice(0, 2).map((feature) => (
-                <div key={feature.id} className="flex gap-4">
-                  <div className="flex-shrink-0 bg-red-50 dark:bg-red-900 p-3 rounded-lg">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-[#363d47] dark:text-gray-100 text-lg mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
-                  </div>
-                </div>
-              ))}
+    {/* Main Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      {/* Left Column - Features Top */}
+      <div className="space-y-8">
+        {features.slice(0, 2).map((feature) => (
+          <div key={feature.id} className="flex gap-4">
+            <div className="flex-shrink-0 bg-red-50 dark:bg-red-900 p-3 rounded-lg">
+              {feature.icon}
+            </div>
+            <div>
+              <h3 className="font-semibold text-[#363d47] dark:text-gray-100 text-base sm:text-lg mb-1">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+                {feature.description}
+              </p>
             </div>
           </div>
+        ))}
+      </div>
 
-          <div className="order-first md:order-none mb-8 md:mb-0">
-            <div className="relative h-72 md:h-96 from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-lg overflow-hidden flex items-center justify-center">
-              <div className="relative w-3/4 h-3/4 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex items-center justify-center">
-          <img src={certi} alt="certification theduocean" className="object-contain rounded-lg"/>
+      {/* Center Image (shows on top in mobile) */}
+      <div className="order-first md:order-none mb-8 md:mb-0">
+<div className="relative h-72 md:h-96 from-blue-50 to-purple-50 dark:from-blue-900 dark:to-purple-900 rounded-lg overflow-hidden flex items-center justify-center">
+  <div className="relative w-3/4 h-3/4 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex items-center justify-center">
+<img src={certi} alt="certification theduocean" className="object-contain rounded-lg"/>
+  </div>
+</div>
+</div>
+
+      {/* Bottom Features */}
+      <div className="md:col-span-2 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {features.slice(2, 4).map((feature) => (
+            <div key={feature.id} className="flex gap-4">
+              <div className="flex-shrink-0 bg-red-50 dark:bg-red-900 p-3 rounded-lg">
+                {feature.icon}
+              </div>
+              <div>
+                <h3 className="font-semibold text-[#363d47] dark:text-gray-100 text-base sm:text-lg mb-1">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+                  {feature.description}
+                </p>
               </div>
             </div>
-          </div>
-
-
-          <div className="col-span-1 md:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-              {features.slice(2, 4).map((feature) => (
-                <div key={feature.id} className="flex gap-4">
-                  <div className="flex-shrink-0 bg-red-50 dark:bg-red-900 p-3 rounded-lg">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-[#363d47] dark:text-gray-100 text-lg mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-16 text-center">
-          <div className="flex flex-wrap justify-center gap-12">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#c04542] dark:text-[#f87171]">450,000+</div>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">Professionals Trained</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#45be91] dark:text-[#34d399]">4,500+</div>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">Organizations</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#f6c911] dark:text-[#facc15]">100+</div>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">Countries</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
+
+    {/* Stats Section */}
+    <div className="mt-16 text-center">
+      <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
+        <div className="text-center">
+          <div className="text-3xl sm:text-4xl font-bold text-[#c04542] dark:text-[#f87171]">450,000+</div>
+          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm sm:text-base">
+            Professionals Trained
+          </p>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl sm:text-4xl font-bold text-[#45be91] dark:text-[#34d399]">4,500+</div>
+          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm sm:text-base">
+            Organizations
+          </p>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl sm:text-4xl font-bold text-[#f6c911] dark:text-[#facc15]">100+</div>
+          <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm sm:text-base">
+            Countries
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
   );
 }

@@ -1263,6 +1263,9 @@ const MobileNavbar = ({ user }) => {
             <Link to="/interview-preprations" onClick={() => setOpen(false)}>
               Project Help
             </Link>
+            <Link to="/interview-questions" onClick={() => setOpen(false)}>
+            Interview Questions
+            </Link>
 
             {user ? (
               <>

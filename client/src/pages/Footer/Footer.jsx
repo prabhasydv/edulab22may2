@@ -182,20 +182,20 @@ const Footer = () => {
       title: "Resources",
       links: [
         { name: "Blogs", href: "#" },
-        { name: "Tutorials", href: "#" },
-        { name: "Practice Tests", href: "#" },
-        { name: "Interview Questions", href: "#" },
-        { name: "Success Stories", href: "#" },
+        // { name: "Tutorials", href: "#" },
+        // { name: "Practice Tests", href: "#" },
+        { name: "Interview Questions", href: "/interview-questions" },
+        // { name: "Success Stories", href: "#" },
       ],
     },
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: <Facebook size={16} />, href: "#" },
-    { name: "Twitter", icon: <Twitter size={16} />, href: "#" },
-    { name: "Instagram", icon: <Instagram size={16} />, href: "#" },
+    { name: "Facebook", icon: <Facebook size={16} />, href: "https://www.facebook.com/TheEduOcean" },
+    // { name: "Twitter", icon: <Twitter size={16} />, href: "#" },
+    { name: "Instagram", icon: <Instagram size={16} />, href: "https://www.instagram.com/the_eduocean?utm_source=ig_web_button_share_sheet&igsh=dHl3b2p2Z2Vkd2l2" },
     { name: "LinkedIn", icon: <Linkedin size={16} />, href: "https://www.linkedin.com/company/theeduocean/?viewAsMember=true" },
-    { name: "YouTube", icon: <Youtube size={16} />, href: "#" },
+    { name: "YouTube", icon: <Youtube size={16} />, href: "https://www.youtube.com/@theeduocean" },
   ];
 
   const [formData, setFormData] = useState({
@@ -486,9 +486,9 @@ const Footer = () => {
             <a href="/sitemap.xml" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
               Sitemap
             </a>
-            <a href="#" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
+            {/* <a href="#" className="hover:text-[#c04542] dark:hover:text-[#f05454]">
               Security Information
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

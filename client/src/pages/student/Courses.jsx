@@ -2,10 +2,10 @@
 // import React from "react";
 // import Course from "./Course";
 // import { useGetPublishedCourseQuery } from "@/features/api/courseApi";
- 
+
 // const Courses = () => {
 //   const {data, isLoading, isError} = useGetPublishedCourseQuery();
- 
+
 //   if(isError) return <h1>Some error occurred while fetching courses.</h1>
 
 //   return (
@@ -255,6 +255,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 const Courses = () => {
   const { data, isLoading, isError } = useGetPublishedCourseQuery();
   const [pageIndex, setPageIndex] = useState(0);
+  const scrollRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const categoryScrollRef = useRef(null);
@@ -275,6 +276,16 @@ const Courses = () => {
     return chunks;
   };
 
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 250;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const paginatedCourses = chunkCourses(filteredCourses, 6);
   const disableCourseNavigation = filteredCourses.length <= 6;
 
@@ -286,6 +297,21 @@ const Courses = () => {
       });
     }
   };
+  const firstHalf = filteredCourses.slice(0, 4);
+  const secondHalf = filteredCourses.slice(4, 8);
+
+  // Utility to chunk courses into groups of 8
+  const chunkArray = (arr, size) => {
+    const result = [];
+    for (let i = 0; i < arr.length; i += size) {
+      result.push(arr.slice(i, i + size));
+    }
+    return result;
+  };
+
+  const courseChunks = chunkArray(filteredCourses, 8);
+
+
 
   const handleSlide = (dir) => {
     if (dir === "left" && pageIndex > 0) {
@@ -324,11 +350,10 @@ const Courses = () => {
                   setSelectedCategory(cat);
                   setPageIndex(0);
                 }}
-                className={`px-4 py-2 whitespace-nowrap rounded-full border text-sm transition ${
-                  selectedCategory === cat
-                    ? "bg-indigo-600 text-white"
-                    : "bg-white dark:bg-gray-700 text-gray-700 dark:text-white border-gray-300"
-                }`}
+                className={`px-4 py-2 whitespace-nowrap rounded-full border text-sm transition ${selectedCategory === cat
+                  ? "bg-indigo-600 text-white"
+                  : "bg-white dark:bg-gray-700 text-gray-700 dark:text-white border-gray-300"
+                  }`}
               >
                 {cat}
               </button>
@@ -344,7 +369,7 @@ const Courses = () => {
         </div>
 
         {/* Course Slider */}
-        <div className="relative overflow-hidden">
+        {/* <div className="relative overflow-hidden">
           <button
             onClick={() => handleSlide("left")}
             disabled={pageIndex === 0 || disableCourseNavigation}
@@ -362,10 +387,10 @@ const Courses = () => {
                 <div
                 key={idx}
                 className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                style={{ gap: 0 }} // no gap here
+                style={{ gap: 0 }}
               >
                 {group.map((course, i) => (
-                  <div key={i} className="p-4"> {/* padding inside card */}
+                  <div key={i} className="p-4">
                     <Course course={course} />
                   </div>
                 ))}
@@ -381,7 +406,100 @@ const Courses = () => {
           >
             <FaChevronRight />
           </button>
+        </div> */}
+
+        {/* <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide py-4"
+        >
+          {isLoading
+            ? Array.from({ length: 8 }).map((_, index) => (
+                <div key={index} className="min-w-[250px] sm:min-w-[300px]">
+                  <CourseSkeleton />
+                </div>
+              ))
+            : filteredCourses.map((course, index) => (
+                <div key={index} className="min-w-[250px] sm:min-w-[300px]">
+                  <Course course={course} />
+                </div>
+              ))}
         </div>
+        
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide py-4"
+        >
+          {isLoading
+            ? Array.from({ length: 8 }).map((_, index) => (
+                <div key={index} className="min-w-[250px] sm:min-w-[300px]">
+                  <CourseSkeleton />
+                </div>
+              ))
+            : filteredCourses.map((course, index) => (
+                <div key={index} className="min-w-[250px] sm:min-w-[300px]">
+                  <Course course={course} />
+                </div>
+              ))}
+        </div> */}
+
+        <div className="w-full">
+          {isLoading ? (
+            <div className="flex gap-6 overflow-x-auto scrollbar-hide py-4">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="w-full sm:min-w-[250px] sm:min-w-[300px]"
+                >
+                  <CourseSkeleton />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              ref={scrollRef}
+              className="flex gap-8 overflow-x-auto scroll-smooth scrollbar-hide py-4 sm:overflow-x-auto overflow-x-hidden"
+            // Notice here: overflow-x-auto on sm+ screens, overflow-x-hidden on mobile
+            >
+              {courseChunks.map((chunk, chunkIndex) => {
+                const topRow = chunk.slice(0, 3);
+                const bottomRow = chunk.slice(3, 6); // Fixed slice, no skipping
+
+                return (
+                  <div
+                    key={chunkIndex}
+                    className="inline-block min-w-full sm:min-w-[1100px] flex flex-col gap-y-6"
+                  >
+                    {/* Top Row */}
+                    <div className="flex flex-col sm:flex-row gap-6">
+                      {topRow.map((course, index) => (
+                        <div
+                          key={index}
+                          className="w-full sm:min-w-[250px] sm:min-w-[300px]"
+                        >
+                          <Course course={course} />
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Bottom Row */}
+                    <div className="flex flex-col sm:flex-row gap-6">
+                      {bottomRow.map((course, index) => (
+                        <div
+                          key={index}
+                          className="w-full sm:min-w-[250px] sm:min-w-[300px]"
+                        >
+                          <Course course={course} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+
       </div>
     </div>
   );
