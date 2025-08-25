@@ -80,12 +80,17 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "*",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: process.env.CLIENT_URL || "*",
+//     credentials: true,
+//   })
+// );
+
+app.use(cors({
+  origin: ["https://theduocean.com", "https://www.theduocean.com", "http://localhost:5173"],
+  credentials: true,
+}));
 
 // ✅ Serve static files from public (for sitemap.xml & robots.txt)
 app.use(express.static(path.join(__dirname, 'Public')));
@@ -115,4 +120,5 @@ app.get("*", (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server listening on ${PORT}`);
 });
+
 
